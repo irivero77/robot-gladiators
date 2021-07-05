@@ -15,33 +15,66 @@ var enemyAttack = 12;
 
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 
+// for (var i = 0; i < enemyNames.length; i++) {
+//     var pickedEnemyName = enemyNames[i];
+//     enemyHealth = 50;
+//     console.log(enemyNames[i]);
+//     console.log(i);
+//     console.log(enemyName[i] + " is at " + i + " index");
+//     fight(enemyNames[i]);
+// }
 
 var fight = function (enemyName) {
-    window.alert("Welcome to Robot Gladiators!");
-    enemyHealth = enemyHealth - playerAttack;
+    while (playerHealth > 0 && enemyHealth > 0) {
+        // ask player if they'd like to fight or run
+    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
-    console.log(
-        playerName + " attacked " + enemyName + " . " + enemyName + " now has " + " health remaining.");
-    if (enemyHealth <= 0) {
-        window.alert(enemyName + " has died!");
-    }
-    else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.");
-    }
+    // if player picks "skip" confirm and then stop the loop
+    if (promptFight === "skip" || promptFight === "SKIP") {
+      // confirm player wants to skip
+      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
-    playerHealth = playerHealth - enemyAttack;
-
-    console.log(
-        enemyName + " attacked " + playerName + " . " + playerName + "now has " + " health remaining.");
-
-    if (playerHealth <= 0) {
-        window.alert(playerName + " has died!");
-    }
-    else {
-        window.alert(playerName + " still has " + playerHealth + " health left.");
+      // if yes (true), leave fight
+      if (confirmSkip) {
+        window.alert(playerName + ' has decided to skip this fight. Goodbye!');
+        // subtract money from playerMoney for skipping
+        playerMoney = playerMoney - 10;
+        console.log("playerMoney", playerMoney)
+        break;
+      }
     }
 
-};
+        enemyHealth = enemyHealth - playerAttack;
+
+        console.log(
+            playerName + " attacked " + enemyName + " . " + enemyName + " now has " + " health remaining.");
+        if (enemyHealth <= 0) {
+            window.alert(enemyName + " has died!");
+            playerMoney = playerMoney = 20;
+            break;
+        }
+
+        else {
+            window.alert(enemyName + " still has " + enemyHealth + " health left.");
+        }
+    
+        playerHealth = playerHealth - enemyAttack;
+    
+        console.log(
+            enemyName + " attacked " + playerName + " . " + playerName + "now has " + " health remaining.");
+    
+        if (playerHealth <= 0) {
+            window.alert(playerName + " has died!");
+            break;
+        }
+        else {
+            window.alert(playerName + " still has " + playerHealth + " health left.");
+        }
+    
+    }; 
+    }
+    
+    
 
 var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -67,34 +100,38 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     // check player's health
     if (playerHealth <= 0) {
         window.alert(playerName + " has died!");
+
     } else {
         window.alert(playerName + " still has " + playerHealth + " health left.");
     }
     // if player choses to skip
 
-} else if (promptFight === "skip" || promptFight === "SKIP") {
 
-    var confirmSkip = window.confirm("Are you sure you want to quit?");
-
-    if (confirmSkip) {
-        window.alert(playerName + " has decided to skip this fight. Goodbye!");
-        // subtract money from playerMoney for skipping
-        playerMoney = playerMoney - 2;
-    }
     // if no (false), ask question again by running fight() again
-    else {
-
+     {
+      
         for (var i = 0; i < enemyNames.length; i++) {
+            var pickedEnemyName = enemyNames[i];
+            enemyHealth = 50;
+            console.log(enemyNames[i]);
+            console.log(i);
+            console.log(enemyName[i] + " is at " + i + " index");
             fight(enemyNames[i]);
         }
+
+        // for (var i = 0; i < enemyNames.length; i++) {
+        //     fight(enemyNames[i]);
+        // }
     }
 }
 
-for (var i = 0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyName[i] + " is at " + i + " index");
-    fight(enemyNames[i]);
-}
+// for (var i = 0; i < enemyNames.length; i++) {
+//     var pickedEnemyName = enemyNames[i];
+//     enemyHealth = 50;
+//     console.log(enemyNames[i]);
+//     console.log(i);
+//     console.log(enemyName[i] + " is at " + i + " index");
+//     fight(enemyNames[i]);
+// }
 
 
